@@ -1,0 +1,22 @@
+{
+ "mysql_db_readable": true,
+ "mysql_user_readable": true,
+ "tables_priv_readable": true,
+ "rows": [
+  {
+   "user": "",
+   "host": "%",
+   "db": "test"
+  },
+  {
+   "user": "",
+   "host": "%",
+   "db": "test\\_%"
+  },
+  {
+   "user": "pma",
+   "host": "localhost",
+   "db": "phpmyadmin"
+  }
+ ]
+}

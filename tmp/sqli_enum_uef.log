@@ -1,0 +1,101 @@
+[10:14:25] === STAGE calib START (workers=4 sleep=0.5) ===
+[10:14:25] === STAGE calib START (workers=4 sleep=0.5) ===
+[10:14:28] CALIB TRUE -> 2.768s (base 0.30, delta 2.47)
+[10:14:28] CALIB TRUE -> 2.768s (base 0.30, delta 2.47)
+[10:14:31] CALIB FALSE -> 2.721s (base 0.30, delta 2.42)
+[10:14:31] CALIB FALSE -> 2.721s (base 0.30, delta 2.42)
+[10:14:34] CALIB TRUE -> 3.492s (base 0.30, delta 3.19)
+[10:14:34] CALIB TRUE -> 3.492s (base 0.30, delta 3.19)
+[10:14:36] CALIB FALSE -> 2.014s (base 0.30, delta 1.71)
+[10:14:36] CALIB FALSE -> 2.014s (base 0.30, delta 1.71)
+[10:14:39] CALIB TRUE -> 3.007s (base 0.30, delta 2.71)
+[10:14:39] CALIB TRUE -> 3.007s (base 0.30, delta 2.71)
+[10:14:42] CALIB FALSE -> 2.294s (base 0.30, delta 1.99)
+[10:14:42] CALIB FALSE -> 2.294s (base 0.30, delta 1.99)
+[10:14:45] CALIB concurrent FALSE raws: ['3.26', '0.50', '1.12', '0.50']
+[10:14:45] CALIB falses=['2.42', '1.71', '1.99'] trues=['2.47', '3.19', '2.71'] -> THRESH=2.44
+[10:14:45] CALIB concurrent FALSE raws: ['3.26', '0.50', '1.12', '0.50']
+[10:14:45] CALIB falses=['2.42', '1.71', '1.99'] trues=['2.47', '3.19', '2.71'] -> THRESH=2.44
+[10:14:45] === STAGE calib DONE in 20s, requests=10 ===
+[10:14:45] === STAGE calib DONE in 20s, requests=10 ===
+[10:19:27] === STAGE info START (content oracle, workers=4) ===
+[10:19:37] database() = 'uefweb'  (verify=True, len=6, total_req=49)
+[10:20:21] user() = 'uefweb@172.16.6.84'  (verify=True, len=18, total_req=182)
+[10:20:44] current_user() = 'uefweb@172.16.6.84'  (verify=True, len=18, total_req=315)
+[10:20:53] @@version = '5.6.21'  (verify=True, len=6, total_req=363)
+[10:21:28] @@version_comment = 'MySQL Community Server (GPL)'  (verify=True, len=28, total_req=567)
+[10:21:42] @@hostname = 'UEF-WEBDB-2'  (verify=True, len=11, total_req=651)
+[10:21:42] === STAGE info DONE in 136s, requests=651 ===
+[10:21:48] === STAGE schemas START (content oracle, workers=4) ===
+[10:21:51] COUNT SELECT COUNT(*) FROM information_schema.schemata = 8
+[10:22:03] schema[0] = 'cdcol'  (verify=True, len=5, total_req=48)
+[10:22:34] schema[1] = 'information_schema'  (verify=True, len=18, total_req=181)
+[10:22:43] schema[2] = 'mysql'  (verify=True, len=5, total_req=223)
+[10:23:11] schema[3] = 'performance_schema'  (verify=True, len=18, total_req=356)
+[10:23:28] schema[4] = 'phpmyadmin'  (verify=True, len=10, total_req=433)
+[10:23:38] schema[5] = 'test'  (verify=True, len=4, total_req=468)
+[10:23:50] schema[6] = 'uefweb'  (verify=True, len=6, total_req=517)
+[10:24:01] schema[7] = 'webauth'  (verify=True, len=7, total_req=573)
+[10:24:01] === STAGE schemas DONE in 133s, requests=573 ===
+[10:24:07] === STAGE tables START (content oracle, workers=4) ===
+[10:24:10] COUNT SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=database() = 142
+[10:24:22] table[0] = 'tbl_album'  (verify=True, len=9, total_req=79)
+[10:24:35] table[1] = 'tbl_banner'  (verify=True, len=10, total_req=156)
+[10:24:52] table[2] = 'tbl_banner_group'  (verify=True, len=16, total_req=275)
+[10:25:07] table[3] = 'tbl_biregister'  (verify=True, len=14, total_req=380)
+[10:25:21] table[4] = 'tbl_category'  (verify=True, len=12, total_req=471)
+[10:25:40] table[5] = 'tbl_cheerleading'  (verify=True, len=16, total_req=590)
+[10:26:05] table[6] = 'tbl_cheerleading_vote'  (verify=True, len=21, total_req=744)
+[10:26:22] table[7] = 'tbl_consultant'  (verify=True, len=14, total_req=849)
+[10:26:49] table[8] = 'tbl_consultant_2025_2026'  (verify=True, len=24, total_req=1024)
+[10:27:04] === TABLES2 10..142 (workers=6) ===
+[10:27:32] sfx[10] = 'ctsv_clubawards_vote' (verify=True, len=20, req=147)
+[10:27:53] sfx[11] = 'ctsv_ytuongsangtao' (verify=True, len=18, req=280)
+[10:28:12] sfx[12] = 'ctsv_ytuong_vote' (verify=True, len=16, req=399)
+[10:28:32] === TABLES2 12..142 (workers=10) ===
+[10:28:48] sfx[12] = 'ctsv_ytuong_vote' (verify=True, len=16, req=119)
+[10:29:01] sfx[13] = 'customerinfo' (verify=True, len=12, req=210)
+[10:29:19] sfx[14] = 'dangkytuvannganhnghe' (verify=True, len=20, req=357)
+[10:29:43] sfx[15] = 'dangkytuvannganh_landing' (verify=True, len=24, req=532)
+[10:30:03] sfx[16] = 'dangkyxettuyendaihoc' (verify=True, len=20, req=679)
+[10:30:23] sfx[17] = 'dangky_chuongtrinhtainang' (verify=True, len=25, req=861)
+[10:30:27] === USERS START ===
+[10:30:30] mysql.user readable: False
+[10:30:30] === USERS DONE in 3s, req=3 ===
+[10:30:38] sfx[18] = 'danhsachxettuyennv' (verify=True, len=18, req=994)
+[10:30:58] sfx[19] = 'danhsachxettuyennvbs' (verify=True, len=20, req=1141)
+[10:31:19] sfx[20] = 'dshvcaohoc_nhandetai' (verify=True, len=20, req=1288)
+[10:31:47] sfx[21] = 'events' (verify=True, len=6, req=1337)
+[10:32:26] sfx[22] = 'gloubbaregister' (verify=True, len=15, req=1449)
+[10:32:50] sfx[23] = 'gopy' (verify=True, len=4, req=1484)
+[10:33:13] === MYSQLDB START ===
+[10:33:15] readable: mysql.db=True mysql.user=True tables_priv=True
+[10:33:20] sfx[24] = 'group' (verify=True, len=5, req=1526)
+[10:33:28] COUNT SELECT COUNT(*) FROM mysql.db = 3
+[10:33:43] mdb.u[0]: EMPTY
+[10:34:01] mdb.h[0] = '%' (verify=True, len=1, req=33)
+[10:34:03] sfx[25] = 'imagecategory' (verify=True, len=13, req=1624)
+[10:34:19] mdb.d[0] = 'test' (verify=True, len=4, req=68)
+[10:34:28] mdb.u[1]: EMPTY
+[10:34:33] sfx[26] = 'infoconsultant' (verify=True, len=14, req=1729)
+[10:34:43] mdb.h[1] = '%' (verify=True, len=1, req=90)
+[10:35:12] sfx[27] = 'inforegister' (verify=True, len=12, req=1820)
+[10:35:24] mdb.d[1] = 'test\\_%' (verify=True, len=7, req=146)
+[10:36:07] mdb.u[2] = 'pma' (verify=True, len=3, req=174)
+[10:36:11] sfx[28] = 'keukabbaregister' (verify=True, len=16, req=1939)
+[10:37:05] sfx[29] = 'khaothi_tracuulichcoithi' (verify=True, len=24, req=2114)
+[10:37:11] mdb.h[2] = 'localhost' (verify=True, len=9, req=244)
+[10:38:03] sfx[30] = 'khaothi_tracuunhdt' (verify=True, len=18, req=2247)
+[10:38:24] mdb.d[2] = 'phpmyadmin' (verify=True, len=10, req=321)
+[10:38:24] === MYSQLDB DONE in 311s, req=321 ===
+[10:38:32] === USERS START ===
+[10:38:33] mysql.user readable: True
+[10:38:39] COUNT SELECT COUNT(*) FROM mysql.user = 8
+[10:38:47] mu[0]: EMPTY
+[10:39:09] mh[0] = 'localhost' (verify=True, len=9, req=84)
+[10:39:20] mu[1] = 'pma' (verify=True, len=3, req=112)
+[10:39:35] mh[1] = 'localhost' (verify=True, len=9, req=182)
+[10:39:50] mu[2] = 'root' (verify=True, len=4, req=217)
+[10:42:05] === USERS2 2..8 ===
+[10:42:29] mu[2] = 'root' (verify=True, len=4, req=35)
+[10:43:03] mh[2] = '127.0.0.1' (verify=True, len=9, req=105)

